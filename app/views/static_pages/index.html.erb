@@ -1,0 +1,24 @@
+<!--index of static pages
+ <%= form_with(url: root_path, method: "get", local: true) do %>
+    <%= label_tag(:user_id, "User ID") %>
+    <%= text_field_tag(:user_id) %><br>
+    <%= submit_tag("Get photos") %>
+<% end %>
+
+<%if @photos%>
+    <% @photos.each do |photo| %>
+        <%=photo.id%>
+    <%end%>
+<%end%>-->
+
+<%= form_with url: root_path, local: true, method: 'get' do |f| %>
+  <%= f.label 'ID:' %>
+  <%= f.text_field :user_id %><br><br>
+  <%= f.submit 'Submit' %>
+<% end %>
+
+<% if @photos %>
+  <% @photos.each do |photo| %>
+    <img src=<%=Flickr.url(photo)%> ><br>
+  <% end %>
+<% end %>
